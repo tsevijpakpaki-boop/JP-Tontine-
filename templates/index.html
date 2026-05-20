@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JP-Tontine</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #f0f2f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+        button {
+            background: #007aff;
+            color: white;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        button:active {
+            background: #0051d5;
+        }
+        .membre {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        .membre:last-child {
+            border-bottom: none;
+        }
+        .montant {
+            float: right;
+            color: #007aff;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>💰 JP-Tontine</h1>
+            <form action="/ajouter" method="POST">
+                <input type="text" name="nom" placeholder="Nom du membre" required>
+                <input type="number" name="montant" placeholder="Montant en FCFA" required>
+                <button type="submit">Ajouter</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h1>Liste des membres</h1>
+            {% if membres %}
+                {% for m in membres %}
+                <div class="membre">
+                    {{ m.nom }} 
+                    <span class="montant">{{ m.montant }} FCFA</span>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>Aucun membre pour l’instant</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
