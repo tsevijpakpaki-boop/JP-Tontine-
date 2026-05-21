@@ -25,8 +25,22 @@ def add_member():
         members.append({'name': name, 'amount': amount})
         flash("Membre ajouté avec succès", "success")
     return redirect(url_for('index'))
-
-@app.route('/withdraw', methods=['POST'])
+@app.route('/add_to_piggy', methods=['POST'])
+def add_to_piggy():
+    name = request.form.get('name')
+    amount = float(request.form.get('amount', 0))
+    
+    # Trouve la tirelire avec ce nom
+    piggy = next((p for p in piggy_banks if p['name'] == name), None)
+    
+    if piggy and amount > 0:
+        piggy['current'] += amount
+        flash("Montant ajouté à la tirelire", "success")
+    else:
+        flash("Tirelire introuvable", "error")
+    
+    return redirect(url_for('index'))
+@app.route( methods=['POST'])
 def withdraw():
     name = request.form.get('name')
     amount = float(request.form.get('amount', 0))
