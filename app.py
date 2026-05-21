@@ -136,7 +136,7 @@ def generate_receipt(tx, piggy):
     c.drawString(100, 710, f"Montant: {tx.amount} FCFA".replace(',', ' '))
     c.drawString(100, 690, f"Réseau: {tx.network.upper()}")
     c.drawString(100, 670, f"Numéro bénéficiaire: {tx.number}")
-    c.drawString(100, 650, f'Commission 5% {tx.fee:,} FCFA'.replace(',', '))
+    c.drawString(100, 650, f"Commission 5% {tx.fee} FCFA".replace(',', ''))
     c.drawString(100, 630, f"Note: {tx.note}")
     c.setFont("Helvetica-Oblique", 10)
     c.drawString(100, 580, "Conservez ce reçu pour vos justificatifs.")
