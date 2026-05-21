@@ -1,2 +1,5 @@
-flask
-gunicorn[standard]
+Flask
+Flask-SQLAlchemy
+Flask-Login
+reportlab
+werkzeug
