@@ -133,7 +133,7 @@ def generate_receipt(tx, piggy):
     c.setFont("Helvetica", 12)
     c.drawString(100, 750, f"Date: {tx.date.strftime('%d/%m/%Y %H:%M')}")
     c.drawString(100, 730, f"Tirelire: {piggy.name}")
-    c.drawString(100, 710, f"Montant: {tx.amount} FCFA".replace(',', '))
+    c.drawString(100, 710, f"Montant: {tx.amount} FCFA".replace(',', ' '))
     c.drawString(100, 690, f"Réseau: {tx.network.upper()}")
     c.drawString(100, 670, f"Numéro bénéficiaire: {tx.number}")
     c.drawString(100, 650, f"Commission 5%: {tx.fee:,} FCFA".replace(',', '))
