@@ -148,22 +148,23 @@
             <button type="submit" class="btn-piggy">Créer la tirelire</button>
         </form>
 
-        {% for p in piggy_banks %}
-        <div class="history-item" style="border-left-color: var(--blue);">
+      {% for p in piggy_banks %}
+<div class="history-item" style="border-left-color: var(--blue);">
   <strong>{{ p.name }}</strong><br>
   {{ p.current }} / {{ p.goal }} FCFA
+  
   
   {% set pourcentage = (p.current / p.goal * 100) if p.goal > 0 else 0 %}
   {% set pourcentage = 100 if pourcentage > 100 else pourcentage %}
   
   <div class="progress-bar">
     <div class="progress-fill" style="width: {{ pourcentage }}%;">
-      {{ "%.0f"|format(pourcentage) }}%
+      {{ pourcentage|round(0) }}%
     </div>
   </div>
+  
 </div>
-        {% endfor %}
-    </div>
+{% endfor %}
 
     <!-- Dépôt/Retrait -->
     <div class="card">
