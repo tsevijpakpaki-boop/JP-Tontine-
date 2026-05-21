@@ -172,14 +172,14 @@
   {{ p.current }} / {{ p.goal }} FCFA
   
   
-  {% set pourcentage = (p.current / p.goal * 100) if p.goal > 0 else 0 %}
-  {% set pourcentage = 100 if pourcentage > 100 else pourcentage %}
-  
-  <div class="progress-bar">
-    <div class="progress-fill" style="width: {{ pourcentage }}%;">
-      {{ pourcentage|round(0) }}%
-    </div>
+{% set pourcentage = (p.current / p.goal * 100) if p.goal > 0 else 0 %}
+{% set pourcentage = 100 if pourcentage > 100 else pourcentage %}
+
+<div class="progress-bar">
+  <div class="progress-fill" style="width: {{ pourcentage }}%;">
+    {{ pourcentage|round(0) }}%
   </div>
+</div> 
   
 </div>
 {% endfor %}
