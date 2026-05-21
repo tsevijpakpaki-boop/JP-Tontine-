@@ -17,13 +17,16 @@ def index():
                            transactions=transactions,
                            piggy_banks=piggy_banks)
 
+
 @app.route('/add_member', methods=['POST'])
 def add_member():
     name = request.form.get('name')
     amount = float(request.form.get('amount', 0))
+    
     if name and amount > 0:
         members.append({'name': name, 'amount': amount})
         flash("Membre ajouté avec succès", "success")
+    
     return redirect(url_for('index'))
 @app.route('/add_to_piggy', methods=['POST'])
 def add_to_piggy():
